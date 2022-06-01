@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer>
-      <a href={sourceUrl} target="_blank" rel="noreferrer">
+      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
         Open Source
       </a>
       Coded by MaggieR
