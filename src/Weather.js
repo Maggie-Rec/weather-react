@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import FormattedTime from "./FormattedTime";
+import FormattedDate from "./FormattedDate";
 import "./Weather.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Weather(props) {
-  //const [ready, setReady] = useState(false);
   const [WeatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
@@ -21,9 +22,9 @@ export default function Weather(props) {
       maxTemp: response.data.main.temp_max,
       minTemp: response.data.main.temp_min,
       day: "Tuesday",
-      date: "14/05/2022",
+      date: new Date(response.data.dt * 1000),
       time: "15:05",
-      imgUrl: "http://openweathermap.org/img/wn/01d.png",
+      imgUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
     });
   }
 
@@ -99,21 +100,22 @@ export default function Weather(props) {
                 </div>
                 <div className="col-6">
                   <div className="row time-date-row">
-                    <div className="col-8">
+                    <div className="col-6">
                       <ul className="dateTime">
-                        <li>{WeatherData.day}</li>
-                        <li>{WeatherData.date}</li>
-                        <br />
-                        <span className="stats">
-                          <li>Humidity: {WeatherData.humidity}%</li>
-                          <li>Wind: {WeatherData.wind}km/h</li>
-                          <li>Pressure: {WeatherData.pressure}hPa</li>
-                        </span>
+                        <li>
+                          <FormattedTime date={WeatherData.date} />
+                        </li>
                       </ul>
                     </div>
-                    <div className="col-4 float-end time" id="time">
-                      {WeatherData.time}
+                    <div className="col-6 float-end time" id="time">
+                      <FormattedDate date={WeatherData.date} />
                     </div>
+                    <br />
+                    <span className="stats">
+                      <li>Humidity: {WeatherData.humidity}%</li>
+                      <li>Wind: {WeatherData.wind}km/h</li>
+                      <li>Pressure: {WeatherData.pressure}hPa</li>
+                    </span>
                   </div>
                 </div>
               </div>
