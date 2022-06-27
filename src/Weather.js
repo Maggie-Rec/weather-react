@@ -4,13 +4,13 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [WeatherData, setWeatherData] = useState({});
+  //const [ready, setReady] = useState(false);
+  const [WeatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
-    setReady(true);
 
     setWeatherData({
+      ready: true,
       city: response.data.name,
       temperature: response.data.main.temp,
       country: response.data.sys.country,
@@ -18,17 +18,14 @@ export default function Weather() {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       pressure: response.data.main.pressure,
+      day: "Tuesday",
+      date: "14/05/2022",
+      time: "15:05",
+      imgUrl: "http://openweathermap.org/img/wn/01d.png",
     });
   }
 
-  if (ready) {
-    let appData = {
-      day: "Tuesday",
-      date: "14/05/2022",
-
-      imgUrl: "http://openweathermap.org/img/wn/01d.png",
-      time: "15:05",
-    };
+  if (WeatherData.ready) {
     return (
       <div className="container">
         <div className="weatherAppWrapper">
@@ -62,7 +59,7 @@ export default function Weather() {
                 <div className="col-6">
                   <img
                     className="wind-icon float-start"
-                    src={appData.imgUrl}
+                    src={WeatherData.imgUrl}
                     id="icon"
                     alt="wind icon"
                   />
@@ -78,7 +75,7 @@ export default function Weather() {
                         <span id="change-city">{WeatherData.city}</span>,
                         <span id="country">{WeatherData.country}</span>
                       </li>
-                      <li>
+                      <li className="text-capitalize">
                         <div>{WeatherData.description}</div>
                       </li>
                       <li>
@@ -94,8 +91,8 @@ export default function Weather() {
                   <div className="row time-date-row">
                     <div className="col-8">
                       <ul className="dateTime">
-                        <li>{appData.day}</li>
-                        <li>{appData.date}</li>
+                        <li>{WeatherData.day}</li>
+                        <li>{WeatherData.date}</li>
                         <br />
                         <span className="stats">
                           <li>Humidity: {WeatherData.humidity}%</li>
@@ -105,7 +102,7 @@ export default function Weather() {
                       </ul>
                     </div>
                     <div className="col-4 float-end time" id="time">
-                      {appData.time}
+                      {WeatherData.time}
                     </div>
                   </div>
                 </div>
