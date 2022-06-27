@@ -3,7 +3,7 @@ import "./Weather.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Weather() {
+export default function Weather(props) {
   //const [ready, setReady] = useState(false);
   const [WeatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
@@ -18,6 +18,8 @@ export default function Weather() {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       pressure: response.data.main.pressure,
+      maxTemp: response.data.main.temp_max,
+      minTemp: response.data.main.temp_min,
       day: "Tuesday",
       date: "14/05/2022",
       time: "15:05",
@@ -79,10 +81,18 @@ export default function Weather() {
                         <div>{WeatherData.description}</div>
                       </li>
                       <li>
-                        max. <span id="highTemp"></span>°C
+                        max.{" "}
+                        <span id="highTemp">
+                          {Math.round(WeatherData.maxTemp)}
+                        </span>
+                        °C
                       </li>
                       <li>
-                        min. <span id="lowTemp"></span>°C
+                        min.{" "}
+                        <span id="lowTemp">
+                          {Math.round(WeatherData.minTemp)}
+                        </span>
+                        °C
                       </li>
                     </ul>
                   </div>
@@ -116,8 +126,7 @@ export default function Weather() {
     );
   } else {
     const apiKey = "f3a2f6fa89402174ee2a085add9c3cd3";
-    let city = "Madrid";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
