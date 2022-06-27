@@ -8,7 +8,7 @@ import Footer from "./Footer";
 function App() {
   return (
     <div className="App">
-      <Weather defaultCity="London" />
+      <Weather defaultCity="New York" />
       <Footer />
     </div>
   );
