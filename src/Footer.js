@@ -6,10 +6,13 @@ export default function Footer() {
 
   return (
     <footer>
-      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-        Open Source
-      </a>
-      Coded by MaggieR
+      <small>
+        This project is{" "}
+        <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+          Open-Sourced on GitHub
+        </a>{" "}
+        and coded by MaggieR
+      </small>
     </footer>
   );
 }
