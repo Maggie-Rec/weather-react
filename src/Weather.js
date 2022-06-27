@@ -54,7 +54,7 @@ export default function Weather(props) {
             </form>
             <div className="inside">
               <div className="row top-row">
-                <div className="col-6">
+                <div className="col-7">
                   <img
                     className="wind-icon float-start"
                     src={WeatherData.imgUrl}
@@ -93,16 +93,16 @@ export default function Weather(props) {
                     </ul>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-5">
                   <div className="row time-date-row">
-                    <div className="col-6">
+                    <div className="col-5">
                       <ul className="dateTime">
                         <li>
                           <FormattedTime date={WeatherData.date} />
                         </li>
                       </ul>
                     </div>
-                    <div className="col-6 float-end time" id="time">
+                    <div className="col-7 float-end time" id="time">
                       <FormattedDate date={WeatherData.date} />
                     </div>
                     <br />

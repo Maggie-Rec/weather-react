@@ -29,7 +29,7 @@ ul {
   font-size: 30px;
 }
 .time {
-  font-size: 18px;
+  font-size: 14px;
   padding-top: 10px;
 }
 .dateTime {
@@ -44,14 +44,14 @@ ul {
 }
 .time-date-row {
   background-color: #f9f9f9;
-  max-width: 400px;
+  max-width: 260px;
   border: solid 1px #826f66;
   border-radius: 5px;
 }
 .stats {
   font-size: 12px;
   display: block;
-  margin-left: 60px;
+  margin-left: 50px;
   list-style: none;
 }
 .fiveDays {
@@ -106,12 +106,15 @@ ul {
   }
 
   .time {
-    font-size: 16px;
+    font-size: 12px;
     padding-left: 0;
     padding-top: 15px;
   }
   #tempCel {
     font-size: 12px;
+  }
+  .stats {
+    margin-left: 0px;
   }
 }
 #units strong {
