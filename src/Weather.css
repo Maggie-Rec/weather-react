@@ -1,8 +1,11 @@
 .wind-icon {
   height: 100px;
   width: 100px;
-  background-color: #888888;
-  border-radius: 50px;
+  background-color: #d8ac9c;
+  border-radius: 30px;
+}
+.btn-secondary {
+  background-color: #d8ac9c !important;
 }
 
 .inside {
@@ -19,14 +22,20 @@ ul {
   margin: 20px auto;
 }
 .weatherApp {
-  background: #faf2f2;
+  background: #fff8f3;
   padding: 20px;
   border-radius: 5%;
   box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
   border: solid 2px #826f66;
 }
 #tempCel {
-  font-size: 30px;
+  font-size: 14px;
+  position: relative;
+  bottom: 9px;
+  color: black !important;
+}
+a {
+  text-decoration: none !important;
 }
 .time {
   font-size: 14px;
