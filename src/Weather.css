@@ -1,13 +1,10 @@
-.wind-icon {
-  height: 100px;
-  width: 100px;
-  background-color: #d8ac9c;
+.top-row .col-1 canvas {
   border-radius: 30px;
+  margin-top: 25px;
 }
 .btn-secondary {
   background-color: #d8ac9c !important;
 }
-
 .inside {
   padding-top: 20px;
   padding-right: 0;
@@ -36,8 +33,9 @@ ul {
 }
 a {
   text-decoration: none !important;
+  color: black !important;
 }
-.time {
+#date {
   font-size: 14px;
   padding-top: 10px;
 }
@@ -130,5 +128,5 @@ a {
   font-size: 28px;
 }
 #properties {
-  display: flex;
+  display: block;
 }

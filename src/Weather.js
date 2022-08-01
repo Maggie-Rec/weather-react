@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,10 +10,9 @@ export default function Weather(props) {
   const [WeatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
-    console.log(response.data);
-
     setWeatherData({
       ready: true,
+      coordinates: response.data.coord,
       city: response.data.name,
       temperature: response.data.main.temp,
       country: response.data.sys.country,
@@ -22,15 +22,13 @@ export default function Weather(props) {
       pressure: response.data.main.pressure,
       maxTemp: response.data.main.temp_max,
       minTemp: response.data.main.temp_min,
-      day: "Tuesday",
       date: new Date(response.data.dt * 1000),
-      time: "15:05",
-      imgUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
+      imgUrl: response.data.weather[0].icon,
     });
   }
 
   function search() {
-    const apiKey = "f3a2f6fa89402174ee2a085add9c3cd3";
+    const apiKey = "dd0d0c42b74af337c94f4b209acc8d4f";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -48,31 +46,29 @@ export default function Weather(props) {
     return (
       <div className="container">
         <div className="weatherAppWrapper">
-          <div class="weatherApp">
+          <div className="weatherApp">
             <form id="search-engine" onSubmit={handleSubmit}>
-              <div class="row">
-                <div class="col-8">
+              <div className="row">
+                <div className="col-8">
                   <input
                     type="search"
                     id="search-city"
                     placeholder="Search the city.."
-                    class="form-control"
+                    className="form-control"
                     onChange={handleCityChange}
                   />
                 </div>
-                <div class="col-3">
+                <div className="col-3">
                   <input
                     type="submit"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
                     value="Search!"
                   />
                 </div>
               </div>
             </form>
             <WeatherInfo data={WeatherData} />
-
-            <h3>Next 6 days:</h3>
-            <div className="fiveDays" id="weather-forecast"></div>
+            <WeatherForecast coordinates={WeatherData.coordinates} />
           </div>
         </div>
       </div>
