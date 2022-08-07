@@ -97,7 +97,7 @@ a {
   position: relative;
   left: 75px;
 }
-.Weatherforecast-temp-min {
+.WeatherForecast-temp-min {
   opacity: 50% !important;
 }
 #weather-forecast {
