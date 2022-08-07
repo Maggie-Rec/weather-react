@@ -98,7 +98,7 @@ a {
   left: 75px;
 }
 .forecast-temperature-min {
-  opacity: 50%;
+  opacity: 50% !important;
 }
 #weather-forecast {
   text-align: center;
